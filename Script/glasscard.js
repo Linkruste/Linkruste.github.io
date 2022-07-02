@@ -1,4 +1,4 @@
-var passiveEvent = false;
+	var passiveEvent = false;
 try {
     var opts = Object.defineProperty({}, 'passive', {
         get: function () {
@@ -6,10 +6,11 @@ try {
         }
     });
     window.addEventListener("test", null, opts);
-} catch (e) { }
+} catch (e) { throw "jblihb";}
 
 passiveEvent = passiveEvent ? { capture: true, passive: true } : true;
 
+//////////////////////////////////////////////////////////////////////////
 
 
 class Card {
@@ -57,7 +58,7 @@ class Card {
 		} else {
 			this.initialX = e.clientX - this.xOffset;
 			this.initialY = e.clientY - this.yOffset;}
-		if (e.target === document.getElementById(this.card)) {this.active = true;}
+		if (e.target === document.getElementById(this.card)) this.active = true;
 	}
 	move(e) {
 		if (this.active) {
@@ -68,10 +69,10 @@ class Card {
 				e.preventDefault();
 				this.currentX = e.clientX - this.initialX;
 				this.currentY = e.clientY - this.initialY;
-				this.xOffset = this.currentX;
-				this.yOffset = this.currentY;
-				this.translate(this.currentX, this.currentY, document.getElementById(this.card));
 			}
+			this.xOffset = this.currentX;
+			this.yOffset = this.currentY;
+			this.translate(this.currentX, this.currentY, document.getElementById(this.card));
 		}
 	}
 	translate(_posx, _posy, elt) {

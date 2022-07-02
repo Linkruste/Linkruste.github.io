@@ -1,3 +1,17 @@
+var passiveEvent = false;
+try {
+    var opts = Object.defineProperty({}, 'passive', {
+        get: function () {
+            passiveEvent = true;
+        }
+    });
+    window.addEventListener("test", null, opts);
+} catch (e) { }
+
+passiveEvent = passiveEvent ? { capture: true, passive: true } : true;
+
+
+
 class Card {
 	constructor(elt, opacity=0.1 /*En pourcentage*/, cornerRadius=16/*en pixels*/,_progressive=false /*Boolean that says if the blur effect is progressive or not*/, _progressiveXOffset=0, _progressiveYOffset=0)
 	{
@@ -21,6 +35,11 @@ class Card {
 		document.getElementById(this.card).addEventListener("mousedown", this.start.bind(this), false);
 		document.getElementById(this.card).addEventListener("mouseup", this.stop.bind(this), false);
 		document.getElementById(this.card).addEventListener("mousemove", this.move.bind(this), false);
+
+		document.getElementById(this.card).addEventListener("touchstart", this.start.bind(this), passiveEvent);
+		document.getElementById(this.card).addEventListener("touchend", this.stop.bind(this), passiveEvent);
+		document.getElementById(this.card).addEventListener("touchmove", this.move.bind(this), passiveEvent);
+
 		document.getElementById(this.card).style.position = "absolute";
 		document.getElementById(this.card).style.float = "left";
 		document.getElementById(this.card).style.zIndex = 1;
@@ -32,18 +51,27 @@ class Card {
 
 	}
 	start(e) {
-		this.initialX = e.clientX - this.xOffset;
-		this.initialY = e.clientY - this.yOffset;
+		if(e.type == "touchstart"){
+			this.initialX = e.touches[0].clientX - this.xOffset;
+			this.initialY = e.touches[0].clientY - this.yOffset;
+		} else {
+			this.initialX = e.clientX - this.xOffset;
+			this.initialY = e.clientY - this.yOffset;}
 		if (e.target === document.getElementById(this.card)) {this.active = true;}
 	}
 	move(e) {
 		if (this.active) {
-			e.preventDefault();
-			this.currentX = e.clientX - this.initialX;
-			this.currentY = e.clientY - this.initialY;
-			this.xOffset = this.currentX;
-			this.yOffset = this.currentY;
-			this.translate(this.currentX, this.currentY, document.getElementById(this.card));
+			if (e.type == "touchmove") {
+				this.currentX = e.touches[0].clientX - this.initialX;
+				this.currentY = e.touches[0].clientY - this.initialY;
+			} else {
+				e.preventDefault();
+				this.currentX = e.clientX - this.initialX;
+				this.currentY = e.clientY - this.initialY;
+				this.xOffset = this.currentX;
+				this.yOffset = this.currentY;
+				this.translate(this.currentX, this.currentY, document.getElementById(this.card));
+			}
 		}
 	}
 	translate(_posx, _posy, elt) {

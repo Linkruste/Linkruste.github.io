@@ -114,6 +114,7 @@ body {
 }
 
 nav {
+	display: inline-flex;
 	position: relative;
 	background-color: #353535;
 	padding: 20px 10px 2.5% 10px;

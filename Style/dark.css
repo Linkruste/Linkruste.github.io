@@ -124,7 +124,6 @@ nav {
 }
 
 nav > a {
-	position: absolute;
 	display: inline-block;
 	padding: 5px;
 	border-radius: 10px;

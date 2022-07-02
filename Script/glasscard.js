@@ -14,8 +14,9 @@ passiveEvent = passiveEvent ? { capture: true, passive: true } : true;
 
 
 class Card {
-	constructor(elt, opacity=0.1 /*En pourcentage*/, cornerRadius=16/*en pixels*/,_progressive=false /*Boolean that says if the blur effect is progressive or not*/, _progressiveXOffset=0, _progressiveYOffset=0)
+	constructor(elt, opacity=0.1 /*En pourcentage*/, cornerRadius=16/*en pixels*/,slider=false,_progressive=false /*Boolean that says if the blur effect is progressive or not*/, _progressiveXOffset=0, _progressiveYOffset=0)
 	{
+		this.blur = 3;
 		this.card = elt;
 		this.progressive = _progressive;
 		this.opacity = opacity;
@@ -41,12 +42,21 @@ class Card {
 		document.getElementById(this.card).addEventListener("touchend", this.stop.bind(this), passiveEvent);
 		document.getElementById(this.card).addEventListener("touchmove", this.move.bind(this), passiveEvent);
 
+		this.slider = document.createElement("input");
+		this.slider.setAttribute("type","range");
+		this.slider.setAttribute("min","0");
+		this.slider.setAttribute("max","10");
+		this.slider.setAttribute("change","updateBlur");
+		this.slider.setAttribute("id","rangeValueForBlurGlass");
+		this.slider.style.display = "none";
+		document.getElementById(this.card).appendChild(this.slider);
+
 		document.getElementById(this.card).style.position = "absolute";
 		document.getElementById(this.card).style.float = "left";
 		document.getElementById(this.card).style.zIndex = 1;
 		document.getElementById(this.card).style.backgroundColor = `rgba(255,255,255,${this.opacity/100})`;
 		document.getElementById(this.card).style.borderRadius = `${this.cornerRadius}px`;
-		document.getElementById(this.card).style.backdropFilter = `blur(3px)`;
+		document.getElementById(this.card).style.backdropFilter = `blur(${this.blur}px)`;
 		document.getElementById(this.card).style.boxShadow = `0px 4px 30px 0px rgba(0,0,0,0.3)`;
 		document.getElementById(this.card).style.border = `1px solid rgba(255,255,255,0.1)`;
 
@@ -60,8 +70,8 @@ class Card {
 			this.initialY = e.clientY - this.yOffset;}
 		if (e.target === document.getElementById(this.card)) this.active = true;
 	}
-	move(e) {
-		if (this.active) {
+	move(e) {	
+		if (this.active) {document.body.style.touchAction = "none";
 			if (e.type == "touchmove") {
 				this.currentX = e.touches[0].clientX - this.initialX;
 				this.currentY = e.touches[0].clientY - this.initialY;
@@ -80,8 +90,14 @@ class Card {
 		if(this.progressive) {elt.style.backdropFilter = `blur(${Math.abs(((this.currentX+this.progressiveXOffset)+(this.currentY+this.progressiveYOffset)*4)/50)}px)`;}
 	}	
 	stop() {
+		document.body.style.touchAction = "pan-y";
 		this.initialX = this.currentX;
 		this.initialY = this.currentY;
 		this.active = false;
+	}
+	updateBlur()
+	{
+		this.blur = document.getElementById('rangeValueForBlurGlass').value;
+		document.getElementById(this.card).style.backdropFilter = `blur(${this.blur}px)`;
 	}
 }

@@ -49,7 +49,7 @@ body {
 	margin-left: 1%;
 	right: 1%;
 	transform: skew(10deg);
-	text-shadow: 0 0 5px #f5650088;
+	text-shadow: 0 0 5px #f56500ff;
 	transition: transform 300ms ease;
 }
 

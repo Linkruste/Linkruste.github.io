@@ -1,10 +1,14 @@
 * {
-	font-family: sans-serif;
 	user-select: none;
 }
 
 h1,h2,h3,h4,h5,h6,i,q {
 	color: #ffffff;
+	font-family: sans-serif;
+}
+h1,h2,h3,h4,h5,h6,p {
+	color: #ffffff;
+	font-family: Pricedown, Consolas, sans-serif;
 }
 
 body {
@@ -30,8 +34,9 @@ body {
 	background-color: #454545;
 	color: #f56500;
 	
-	padding: 0 1% 0 1%;
+	padding: -1% 1% -1% 1%;
 	width: fit-content;
+	height: fit-content;
 
 	cursor: pointer;
 	transition: transform 300ms ease;
@@ -62,11 +67,11 @@ body {
 	transition: transform 300ms ease;
 }
 
-.buttonspec > a {
+.buttonspec > a > p {
 	display: inline-block;
 	color: #f56500;
 	text-decoration: none;
-	margin-left: 1%;
+	margin: 1% 1% 1% 0;
 	right: 1%;
 	transform: skew(10deg);
 	text-shadow: 0 0 7px #f56500ff;
@@ -99,7 +104,7 @@ body {
 	animation-fill-mode: forwards;
 }
 
-.buttonspec:hover > a {
+.buttonspec:hover > a > p {
 	text-decoration: none;
 	transform: scale(0.9) skew(35deg);
 	animation-name: rgb;
@@ -142,6 +147,21 @@ nav > a:hover {
 	border: #0088ff 3px solid;
 }
 
+.projects {
+	border-radius: 15px;
+	background-color: #353535;
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 20px;
+	margin-bottom: 10px;
+	width: 85%;
+}
+.projects > .buttonspec {
+	font-family: sans-serif;
+	margin-bottom: 10px;
+}
+
 @keyframes rgb {
 	0% {
 		color: #ff0000;
@@ -172,4 +192,11 @@ nav > a:hover {
 		text-shadow: #fe0001 0 0 5px;
 	}
 
+}
+
+@font-face {
+	font-family: "Pricedown";
+	src: url("../Font/pricedown/pricedown.otf");
+	src: url("../Font/pricedown/pricedown.otf") format("opentype"),
+	src: url("../Font/pricedown/pricedown.otf") format("woff");
 }

@@ -8,7 +8,7 @@ h1,h2,h3,h4,h5,h6,i,q {
 }
 h1,h2,h3,h4,h5,h6,p {
 	color: #ffffff;
-	font-family: Pricedown, Consolas, sans-serif;
+	font-family: Consolas, sans-serif;
 }
 
 body {
@@ -68,6 +68,7 @@ body {
 }
 
 .buttonspec > a > p {
+	font-family: Pricedown, sans-serif;
 	display: inline-block;
 	color: #f56500;
 	text-decoration: none;
@@ -158,7 +159,6 @@ nav > a:hover {
 	width: 85%;
 }
 .projects > .buttonspec {
-	font-family: sans-serif;
 	margin-bottom: 10px;
 }
 

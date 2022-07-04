@@ -122,6 +122,8 @@ body {
 
 nav {
 	display: inline-flex;
+	flex-wrap: nowrap;
+	justify-content: space-around;
 	position: relative;
 	background-color: #353535;
 	padding: 20px 10px 2.5% 10px;
@@ -131,21 +133,41 @@ nav {
 	width: infinite;
 }
 
-nav > a {
+nav > a:not([id=notALink]) {
+	text-align: center;
 	display: inline-block;
+	margin: 5% 1% 5% 1%;
 	padding: 5px;
 	border-radius: 10px;
 	background-color: #555555;
 	text-decoration: none;
 	color: #ffffff;
-	margin: 0 1% 0 1%;
 	transition: transform 300ms ease;
 	transform: scale(1.0);
+	transition: border 300ms ease;
+}
+nav > img {
+	display: inline-block;
+	margin: 5% 1% 5% 1%;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: #555555;
+	text-decoration: none;
+	color: #ffffff;
+	transition: transform 300ms ease;
+	transform: scale(1.0);
+	transition: border 300ms ease;
+}
+
+nav >img:hover {
+	border: #0088ff 3px solid;
+	transition: border 300ms ease;
 }
 
 nav > a:hover {
 	transform: scale(1.2);
 	border: #0088ff 3px solid;
+	transition: border 300ms ease;
 }
 
 .projects {

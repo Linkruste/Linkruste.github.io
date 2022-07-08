@@ -3,21 +3,26 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="Style/dark.css">
+	<link rel="stylesheet" type="text/css" href="Style/dark.css" id="stylesheetDef">
 	<link rel="icon" type="icon/png" href="https://avatars.githubusercontent.com/u/74532664?v=4">
 	<title>Linkruste website</title>
 </head>
 <body>
-	<div style="background-color: #353535;width: infinite; height: fit-content; margin-top: -10px;">
+	<div style="background-color: #353535;width: infinite; height:10%; margin-top: -10px;">
 		<nav>
-			<img src="https://avatars.githubusercontent.com/u/74532664?v=4" style="border-radius: 100%; width: 10%;height: 10%; cursor: pointer;" alt="Happy Linkruste ^^" title="Happy Linkruste ^^" onclick="window.open('https://github.com/Linkruste');">
+			<img src="https://avatars.githubusercontent.com/u/74532664?v=4" style="border-radius: 100%; cursor: pointer;height: 3rem;" alt="Happy Linkruste ^^" title="Happy Linkruste ^^" onclick="window.open('https://github.com/Linkruste');">
 			<a href="https://github.com/Linkruste"><p>My Github profile</p></a>
 			<a href="https://github.com/Linkruste?tab=repositories"><p>My Github repositories</p></a>
+			<div class="setting" style="float: right; display: none;">
+				<img src=""> <!--Moon icon-->
+				<input type="range" name="theme" id="theme" min="0" max="1">
+				<img src=""> <!--Sun icon-->
+			</div>
 		</nav>
 	</div>
 	<div id="corps">
 		
-		<h1 style="font-family:consolas">Welcome to Linkruste's Tavern !</h1>
+		<h1 style="font-family:consolas">Welcome to Linkruste's Tavern mate !</h1>
 		<h2 style="font-family:consolas">Who am I ?</h2>
 	
 		<h3 style="font-family:consolas">-I'm a <span style="color:#ff2020">Fr</span><span style="color:#ffffff">en</span ><span style="color:#2020ff">ch</span> young developer, often coding some useless stuff, but sometimes it's kind of useful or fun so I post it there !</h3>

@@ -5,16 +5,19 @@
 h1,h2,h3,h4,h5,h6,i,q {
 	color: #ffffff;
 	font-family: sans-serif;
+	-webkit-font-family: Arial, sans-serif;
 }
 h1,h2,h3,h4,h5,h6,p {
 	color: #ffffff;
-	font-family: Consolas, sans-serif;
+	font-family: Consolas, Arial, sans-serif;
+	-webkit-font-family: Consolas, Arial, sans-serif;
 }
 
 body {
 	background-color: #252525;
 	overflow: scroll;
 	touch-action: pan-x pan-y pinch-zoom;
+	-webkit-touch-action: pan-x pan-y pinch-zoom;
 }
 
 #corps {
@@ -31,6 +34,7 @@ body {
 
 	cursor: pointer;
 	transition: transform 300ms ease;
+	-webkit-transition: transform 300ms ease;
 }
 
 .buttonspec {

@@ -57,6 +57,7 @@ class Card {
 		document.getElementById(this.card).style.backgroundColor = `rgba(255,255,255,${this.opacity/100})`;
 		document.getElementById(this.card).style.borderRadius = `${this.cornerRadius}px`;
 		document.getElementById(this.card).style.backdropFilter = `blur(${this.blur}px)`;
+		document.getElementById(this.card).style.backdropFilter = `-webkit-blur(${this.blur}px)`;
 		document.getElementById(this.card).style.boxShadow = `0px 4px 30px 0px rgba(0,0,0,0.3)`;
 		document.getElementById(this.card).style.border = `1px solid rgba(255,255,255,0.1)`;
 
